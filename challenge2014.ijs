@@ -26,6 +26,14 @@ comparable =: tolower &: stripSpecial
 isPalindrome =: (comparable @ |.) -: comparable
 
 NB. =========================================================
+NB. Problem 8 - Go the distance
+NB. =========================================================
+
+NB: Calculates the distance between two points in a space of any number of dimensions (Euclidean space):
+
+distance =: %: @: (+/ @: (*: @: -))
+
+NB. =========================================================
 NB. Problem 10 - Sales are up, aren't they?
 NB. =========================================================
 
