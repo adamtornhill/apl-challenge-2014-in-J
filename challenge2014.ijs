@@ -12,3 +12,9 @@ NB. Problem 2 - How tweet it is
 
 vowel =: 'AEIOUaeiou'
 isVowel =: +/ @: (vowel & =)
+
+NB. Problem 5 - Mirror Mirror
+
+stripSpecial =: -. & ' ,.;:!?' NB. All test cases pass with this but we need a better way to strip special characters.
+comparable =: tolower &: stripSpecial
+isPalindrome =: (comparable @ |.) -: comparable
