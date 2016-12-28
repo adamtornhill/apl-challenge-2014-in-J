@@ -34,6 +34,19 @@ NB: Calculates the distance between two points in a space of any number of dimen
 distance =: %: @: (+/ @: (*: @: -))
 
 NB. =========================================================
+NB. Problem 9 - Going ballistic
+NB. =========================================================
+
+NB. Calculates the distance (in meters) a projectile travels given an initial velocity in meters
+per second and a trajectory in degrees.
+
+acc =: *: @: [
+toRadians =: 180 %~ o.
+direction =: sin @: (2 & *) @: toRadians @: ]
+G =: 9.8
+balisticDistance =: acc * direction % G"_
+
+NB. =========================================================
 NB. Problem 10 - Sales are up, aren't they?
 NB. =========================================================
 
