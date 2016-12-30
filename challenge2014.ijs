@@ -14,8 +14,24 @@ NB. =========================================================
 NB. Problem 2 - How tweet it is
 NB. =========================================================
 
-vowel =: 'AEIOUaeiou'
-isVowel =: +/ @: (vowel & =)
+splitToWords =: ' ' & splitstring
+joinWords =: ' ' & joinstring
+trimVowel =: -. & 'AEIOUaeiou'
+innerPart =: }. @: }:
+trimInnerVowels =: {. , (trimVowel @: innerPart) , {:
+trimmable =: (> &2) @: #
+trimWord =: ] ` trimInnerVowels @. trimmable
+
+NB. This is seriously cool: we apply our function to each box and, using the obverse of 
+NB. unbox that J automatically deduces, we put it all back into the box:
+makeTweetable =: joinWords @: (trimWord &. >) @: splitToWords
+
+NB. There's another pattern we'd like to encapsulate: the obverse of splitToWords is joinWords. How?
+
+NB. =========================================================
+NB. Problem 3 - Tell a Fib
+NB. =========================================================
+
 
 NB. =========================================================
 NB. Problem 5 - Mirror Mirror
