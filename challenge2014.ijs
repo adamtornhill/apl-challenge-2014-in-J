@@ -14,19 +14,18 @@ NB. =========================================================
 NB. Problem 2 - How tweet it is
 NB. =========================================================
 
-splitToWords =: ' ' & splitstring
-joinWords =: ' ' & joinstring
 trimVowel =: -. & 'AEIOUaeiou'
 innerPart =: }. @: }:
 trimInnerVowels =: {. , (trimVowel @: innerPart) , {:
 trimmable =: (> &2) @: #
 trimWord =: ] ` trimInnerVowels @. trimmable
 
-NB. This is seriously cool: we apply our function to each box and, using the obverse of 
-NB. unbox that J automatically deduces, we put it all back into the box:
-makeTweetable =: joinWords @: (trimWord &. >) @: splitToWords
-
-NB. There's another pattern we'd like to encapsulate: the obverse of splitToWords is joinWords. How?
+NB. I use this as an example on the Under pattern with verb inverses. Using this pattern 
+NB. we manage to encapsulate two steps:
+NB.  - The outer step where we tokenize the string (;:), apply the inner obverse, and put the tokens back into a string.
+NB.  - The inner step where we apply our function to each box and using the obverse of 
+NB.    unbox (that J automatically deduces) we put it all back into the box.
+tweetable =: trimWord&.> &.;:
 
 NB. =========================================================
 NB. Problem 3 - Tell a Fib
