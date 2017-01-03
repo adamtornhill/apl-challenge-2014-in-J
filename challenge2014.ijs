@@ -36,9 +36,9 @@ NB. =========================================================
 NB. Problem 5 - Mirror Mirror
 NB. =========================================================
 
-stripSpecial =: -. & ' ,.;:!?' NB. All test cases pass with this but we need a better way to strip special characters.
+stripSpecial =: -. & (a.-.a.{~65 97+/i.26) NB. strip everything that is not a letter
 comparable =: tolower &: stripSpecial
-isPalindrome =: (comparable @ |.) -: comparable
+isPalindrome =: ([: comparable |.) -: comparable NB. a chance to use the capped fork for function composition
 
 NB. =========================================================
 NB. Problem 8 - Go the distance
